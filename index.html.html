@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg,#6EE7B7 0%,#3B82F6 100%);
+      display: flex; justify-content: center; align-items: center;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    .box {
+      background: #ffffff;
+      padding: 40px 35px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      width: 360px;
+      animation: fade 1s ease;
+    }
+
+    @keyframes fade {
+      from {opacity: 0; transform: translateY(20px);}
+      to   {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2563EB;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 15px;        /* أكبر */
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;      /* أكبر */
+      transition: 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #3B82F6;
+      box-shadow: 0 0 8px #93C5FD;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      background: #3B82F6;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 17px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background: #2563EB;
+      box-shadow: 0 5px 15px rgba(37,99,235,0.4);
+    }
+
+    .social-btn {
+      width: 100%;
+      padding: 13px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .google {background:#DB4437; color:white;}
+    .google:hover {background:#b5362c;}
+    .facebook {background:#1877F2; color:white;}
+    .facebook:hover {background:#1259b5;}
+
+    .error {
+      color: #DC2626;
+      font-size: 15px;
+      text-align: center;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .link a {
+      text-decoration: none;
+      color: #2563EB;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .link a:hover {
+      color: #1E40AF;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Welcome Back</h2>
+    <form id="loginForm">
+      <div class="error" id="loginError">Please enter both username and password.</div>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password">
+
+      <input type="submit" value="Login">
+    </form>
+
+    <!-- تسجيل اجتماعي -->
+    <button class="social-btn google">
+      <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20">
+      Sign in with Google
+    </button>
+    <button class="social-btn facebook">
+      <img src="https://www.svgrepo.com/show/475629/facebook-color.svg" width="20">
+      Sign in with Facebook
+    </button>
+
+    <div class="link" style="margin-top:18px;">
+      <a href="signup.html">Create an account</a> | 
+      <a href="reset-password.html">Forgot password?</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const u=document.getElementById("username").value.trim();
+      const p=document.getElementById("password").value.trim();
+      const err=document.getElementById("loginError");
+      if(u===""||p===""){err.style.display="block";}
+      else{err.style.display="none";alert("Welcome back, "+u+"!");}
+    });
+
+    // أزرار جوجل وفيسبوك هنا شكل فقط – لازم backend علشان يشتغل فعلي
+    document.querySelector(".google").addEventListener("click",()=>alert("Google login needs backend integration."));
+    document.querySelector(".facebook").addEventListener("click",()=>alert("Facebook login needs backend integration."));
+  </script>
+
+</body>
+</html>
