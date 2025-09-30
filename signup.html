@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #6EE7B7 0%, #3B82F6 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    .box {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      width: 320px;
+      animation: fade 1s ease;
+    }
+
+    @keyframes fade {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2563EB;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #3B82F6;
+      box-shadow: 0 0 8px #93C5FD;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background: #3B82F6;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background: #2563EB;
+      box-shadow: 0 5px 15px rgba(37,99,235,0.4);
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .link a {
+      text-decoration: none;
+      color: #2563EB;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .link a:hover {
+      color: #1E40AF;
+    }
+
+    .error {
+      color: #DC2626;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Welcome Back</h2>
+    <form id="loginForm">
+      <div class="error" id="loginError">Please enter both username and password.</div>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password">
+
+      <input type="submit" value="Login">
+    </form>
+
+    <div class="link">
+      <a href="signup.html">Create an account</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const u=document.getElementById("username").value.trim();
+      const p=document.getElementById("password").value.trim();
+      const err=document.getElementById("loginError");
+      if(u===""||p===""){err.style.display="block";}
+      else{err.style.display="none";alert("Welcome back, "+u+"!");}
+    });
+  </script>
+
+</body>
+</html>
